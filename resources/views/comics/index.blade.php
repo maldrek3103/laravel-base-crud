@@ -6,24 +6,13 @@
 
 @section('content')
 
-    
-        {{-- @foreach ($comics as $comic) --}}
-        
-            {{-- <img src="{{ $comic->thumb }}" class="card-img-top img-fluid" alt="{{ $comic->title }}">
-            <div class="card-body">
-              <h2 class="card-title">{{ $comic->title }}</h2>
-              <h4>{{ $comic->series }}</h4>
-              <p class="card-text">{{ $comic->description }}</p>
-              <p>{{ $comic->price }}</p>
-              <p>{{ $comic->sale_date }}</p>
-              <p>{{ $comic->type }}</p>
-            </div> --}}
          
             <h1 class="card-title text-center">Comics List</h1>
-
+            @if(!empty($comics))
             <table class="table">
                 <thead>
                   <tr>
+                      <th scope="col">Image</th>
                     <th scope="col">Title</th>
                     <th scope="col">Series</th>
                     <th scope="col">Sale date</th>
@@ -32,20 +21,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @forelse($comics as $comic)
+                    @foreach($comics as $comic)
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <td>
+                        @if($comic->thumb)
+                        <img src="{{$comic->thumb}}" alt="{{$comic->title}}" class="img-fluid me-3" width="50">
+                        @endif
+                    </td>
+                    <td>{{$comic->title}}</td>
+                    <td>{{$comic->series}}</td>
+                    <td>{{$comic->sale_date}}</td>
+                    <td>{{$comic->type}}</td>
+                    <td>{{$comic->price}}</td>
                   </tr>
-                    @empty 
-                    <tr>
-                        <td colspan="5" class="text-center">There are no comics</td>
-                    </tr>
-                    @endforelse
+                    @endforeach
                 </tbody>
               </table>
-        {{-- @endforeach --}}
+              @else
+              <hr>
+              <h4 class="text-center mt-3">There are no comics</h4>
+              @endif
 
 @endsection
