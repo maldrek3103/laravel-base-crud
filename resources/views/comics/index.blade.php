@@ -7,7 +7,7 @@
     <div class="container">
         @foreach ($comics as $comic)
         <ul>
-            <li><h1>{{ $comic->title }}</li>
+            <li><h1>{{ $comic->title }}</h1></li>
             <li>{{ $comic->description }}</li>
             <li>{{ $comic->thumb }}</li>
             <li>{{ $comic->price }}</li>
