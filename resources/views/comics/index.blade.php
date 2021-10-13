@@ -18,6 +18,7 @@
                     <th scope="col">Sale date</th>
                     <th scope="col">Type</th>
                     <th scope="col">Price</th>
+                    <th scope="col">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -33,6 +34,9 @@
                     <td>{{$comic->sale_date}}</td>
                     <td>{{$comic->type}}</td>
                     <td>{{$comic->price}}</td>
+                    <td>
+                        <a href="{{route('comics.show', $comic->id)}}" class="btn btn-dark">Show</a>
+                    </td>
                   </tr>
                     @endforeach
                 </tbody>
